@@ -24,6 +24,7 @@ What It Does:
 ------------------------------------------------------------------------------------
 
 🔹 Tech Stack:
+
 Layer	              Tool
 Frontend	   HTML, CSS, JavaScript
 Backend	     Node.js, Express
@@ -37,5 +38,5 @@ Database	   MongoDB Atlas
 
 🔧 Backend: https://skillswap-backend-2.onrender.com
 
-
+To run the code use terminal for server.js and run live for the HTML code
 
