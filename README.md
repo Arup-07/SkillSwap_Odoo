@@ -1,6 +1,7 @@
 # SkillSwap_Odoo
 
 LEADER - ARUP JYOTI MOHANTY
+
 TEAM MEMBER - RAJLAKSHMI BHAL , MIKESH KUMAR PRADHAN
 
 
@@ -38,5 +39,5 @@ Database	   MongoDB Atlas
 
 🔧 Backend: https://skillswap-backend-2.onrender.com
 
-To run the code use terminal for server.js and go live either for the index.html file.
+To run the code use terminal for server.js and go live for the index.html file.
 
