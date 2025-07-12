@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Skills</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <h1>Skill<span>Swap</span></h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#" class="active">Browse Skills</a>
+        <a href="profile.html">My Profile</a>
+        <a href="requests.html">Requests</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h3>Find Users by Skill or Availability</h3>
+    
+    <div class="filter-controls">
+      <input type="text" id="search" placeholder="Search skills..." />
+      <div id="suggestions" class="suggestions-box"></div>
+
+      <select id="availabilityFilter">
+        <option value="All">All Availabilities</option>
+        <option>Weekends</option>
+        <option>Evenings</option>
+        <option>Flexible</option>
+      </select>
+    </div>
+
+    <div class="cards" id="browse-results"></div>
+  </main>
+
+  <footer><div class="container">&copy; 2025 SkillSwap</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
