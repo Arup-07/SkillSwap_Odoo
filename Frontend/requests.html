@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Requests | SkillSwap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <h1>Skill<span>Swap</span></h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse Skills</a>
+        <a href="profile.html">My Profile</a>
+        <a href="#" class="active">Requests</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h3>Swap Requests</h3>
+
+    <div>
+      <h4>📤 Sent Requests</h4>
+      <div id="sentRequests" class="request-list"></div>
+    </div>
+
+    <div>
+      <h4>📥 Received Requests</h4>
+      <div id="receivedRequests" class="request-list"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">&copy; 2025 SkillSwap</div>
+  </footer>
+
+  <script>
+    // ✅ Replace this with a real user ID from your MongoDB 'users' collection
+    const currentUserId = "68721885c51ebd43630abd8e";
+
+    async function loadRequests() {
+      try {
+        const res = await fetch("http://localhost:5000/api/requests");
+        const requests = await res.json();
+
+        console.log("📦 All requests:", requests);
+        console.log("🔑 currentUserId:", currentUserId);
+
+        const sent = requests.filter(r => r.fromUser && r.fromUser._id === currentUserId);
+        const received = requests.filter(r => r.toUser && r.toUser._id === currentUserId);
+
+        console.log("✉️ Sent:", sent);
+        console.log("📥 Received:", received);
+
+        displayRequests("sentRequests", sent, "To");
+        displayRequests("receivedRequests", received, "From", true);
+
+      } catch (err) {
+        console.error("❌ Error fetching requests:", err);
+        document.getElementById("sentRequests").innerText = "Failed to load.";
+        document.getElementById("receivedRequests").innerText = "Failed to load.";
+      }
+    }
+
+    function displayRequests(containerId, requests, label, showActions = false) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      if (!requests || requests.length === 0) {
+        container.innerHTML = "<p>No requests found.</p>";
+        return;
+      }
+
+      requests.forEach(req => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <p><strong>${label}:</strong> ${label === "From" ? req.fromUser?.name : req.toUser?.name}</p>
+          <p><strong>Skill Offered:</strong> ${req.skillOffered}</p>
+          <p><strong>Skill Wanted:</strong> ${req.skillWanted}</p>
+          <p><strong>Status:</strong> ${req.status}</p>
+        `;
+
+        if (showActions && req.status === "pending") {
+          const acceptBtn = document.createElement("button");
+          acceptBtn.className = "btn";
+          acceptBtn.innerText = "Accept";
+          acceptBtn.onclick = () => updateRequestStatus(req._id, "accepted");
+
+          const rejectBtn = document.createElement("button");
+          rejectBtn.className = "btn";
+          rejectBtn.innerText = "Reject";
+          rejectBtn.onclick = () => updateRequestStatus(req._id, "rejected");
+
+          card.appendChild(acceptBtn);
+          card.appendChild(rejectBtn);
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    async function updateRequestStatus(id, status) {
+      try {
+        const res = await fetch(`http://localhost:5000/api/requests/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status })
+        });
+
+        if (res.ok) {
+          alert(`✅ Request ${status}`);
+          loadRequests();
+        } else {
+          alert("❌ Failed to update");
+        }
+      } catch (err) {
+        console.error("❌ Update error:", err);
+      }
+    }
+
+    loadRequests();
+  </script>
+
+</body>
+</html>
