@@ -1,18 +1,41 @@
 # SkillSwap_Odoo
-Team Member Details:
-Member 1:Arup Jyoti Mohanty
 
-Email: arupjyotimohanty7710@gmail.com
+LEADER - ARUP JYOTI MOHANTY
+TEAM MEMBER - RAJLAKSHMI BHAL , MIKESH KUMAR PRADHAN
 
-Member 2: RajLakshmi Bhal
 
-Email:rajlakshmibhal824@gmail.com
-
-Member 3:Mikesh Kumar Pradhan
-
-Email:mikeshpradhan5@gmail.com
-
-Problem Statement:
-Skill Swap Platform :
+PROBLEM STATEMENT -1
 Develop a Skill Swap Platform — a mini application that enables users to list their skills and 
 request others in return 
+
+What It Does:
+🧑 Create a public profile listing skills you can teach & learn
+
+🔍 Browse and search other users by offered/wanted skills
+
+🔁 Request a swap with someone who has what you want
+
+✅ Accept or reject incoming swap requests
+
+🔔 Get live feedback with toast alerts and updates
+
+📱 Fully responsive UI for mobile and desktop use
+
+------------------------------------------------------------------------------------
+
+🔹 Tech Stack:
+Layer	              Tool
+Frontend	   HTML, CSS, JavaScript
+Backend	     Node.js, Express
+Database	   MongoDB Atlas
+
+----------------------------------------------------------------------------
+
+🔹 Live Links:(may not be same looking as webpage as it was styled afterwards)
+
+🌐 Frontend: https://skillswap-frontend-eight.vercel.app
+
+🔧 Backend: https://skillswap-backend-2.onrender.com
+
+
+
