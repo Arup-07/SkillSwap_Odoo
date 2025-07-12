@@ -38,5 +38,5 @@ Database	   MongoDB Atlas
 
 🔧 Backend: https://skillswap-backend-2.onrender.com
 
-To run the code use terminal for server.js and run live for the HTML code
+To run the code use terminal for server.js and go live either for the index.html file.
 
